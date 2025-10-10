@@ -1,6 +1,7 @@
 #include <Bluepad32.h>
 
 #include "ModeCar.h"
+#include "ModeSelector.h"
 #include "ModeTriggers.h"
 #include "Motor.h"
 #include "Router.h"
@@ -15,22 +16,21 @@ byte D5 = 8;
 byte D4 = 7;
 
 // objects
-Motor motorA(D10, D9, D8);
-Motor motorB(D3, D5, D4);
-Router router(motorA, motorB);
+Router router(new Motor(D10, D9, D8), new Motor(D3, D5, D4));
 
 ControllerPtr controller;
 
-ModeCar modeCar(controller, router);
-ModeTriggers modeTriggers(controller, router);
+Modes modes {
+  new ModeCar(controller, router),
+  new ModeTriggers(controller, router)
+};
 
-Mode &modePtr = modeCar;
+ModeSelector modeSelector(controller, modes);
 
 void setup() {
   Serial.begin(115200);
 
-  motorA.setup();
-  motorB.setup();
+  router.setup();
   BP32.setup(&onConnectedController, &onDisconnectedController);
 
   Serial.println("Waiting for controller to connect");
@@ -38,15 +38,7 @@ void setup() {
 
 void loop() {
   if (BP32.update() && controller && controller->isConnected() && controller->hasData()) {
-    if (controller->y() || controller->a()) {
-      modePtr = modeCar;
-    }
-
-    if (controller->b()) {
-      modePtr = modeTriggers;
-    }
-
-    modePtr.update();
+    modeSelector.update();
   }
 
   vTaskDelay(1);

@@ -2,12 +2,15 @@
 
 class Motor {
 private:
-  int en_pin;
-  int in1_pin;
-  int in2_pin;
+  bool flip = false;
+  byte en_pin;
+  byte in1_pin;
+  byte in2_pin;
 
 public:
-  Motor(int en_pin, int in1_pin, int in2_pin);
+  Motor(byte en_pin, byte in1_pin, byte in2_pin);
   void setup();
-  void update(int speed, bool forward);
+  void setFlipped();
+  void setStandard();
+  void update(byte speed, bool forward);
 };

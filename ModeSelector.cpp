@@ -5,13 +5,25 @@ ModeSelector::ModeSelector(ControllerPtr &controller, Modes modes)
   this->modePtr = modes.car;
 }
 
+void ModeSelector::reset() { setCarMode(); }
+
+void ModeSelector::setCarMode() {
+  modePtr = modes.car;
+  Serial.println("Car mode");
+}
+
+void ModeSelector::setTriggersMode() {
+  modePtr = modes.triggers;
+  Serial.println("Triggers mode");
+}
+
 void ModeSelector::update() {
-  if (controller->y() || controller->a()) {
-    modePtr = modes.car;
+  if (controller->y()) {
+    setCarMode();
   }
 
   if (controller->b()) {
-    modePtr = modes.triggers;
+    setTriggersMode();
   }
 
   modePtr->update();

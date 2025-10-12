@@ -16,7 +16,11 @@ private:
   Modes modes;
   ControllerPtr &controller;
 
+  void setCarMode();
+  void setTriggersMode();
+
 public:
   ModeSelector(ControllerPtr &controller, Modes modes);
+  void reset();
   void update();
 };

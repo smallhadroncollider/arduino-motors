@@ -7,7 +7,7 @@
 
 ## To Do
 
-- [ ] Shoulder pads to flip motor control
+- [x] Shoulder pads to flip motor control
     - [x] L1: motor A and motor B
     - [x] R1: motor B and motor A
 - [ ] D-Pad controls direction

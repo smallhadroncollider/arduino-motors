@@ -22,10 +22,10 @@
 - [x] D-Pad controls direction
     - [x] Left / right d-pad change motor A's direction
     - [x] Up / down d-pad change motor B's direction
-- [ ] A / B / X / Y buttons change "mode"
+- [x] A / B / X / Y buttons change "mode"
     - [x] Throttle mode: left throttle => left motor / right throttle => right motor
     - [x] Car mode: left/right throttle => speed motor / left x-axis => steering motor
-    - [ ] Warthog mode: left y-axis => speed motor / left x-axis => steering motor
+    - [x] Warthog mode: left y-axis => speed motor / left x-axis => steering motor
 - [ ] Right joystick controls max speed
     - [ ] Left / right d-pad change motor A's max speed
     - [ ] Up / down d-pad change motor B's max speed

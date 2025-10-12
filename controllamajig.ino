@@ -3,6 +3,7 @@
 #include "ModeCar.h"
 #include "ModeSelector.h"
 #include "ModeTriggers.h"
+#include "ModeWarthog.h"
 #include "Motor.h"
 #include "Router.h"
 
@@ -24,7 +25,8 @@ ControllerPtr controller;
 
 Modes modes {
   new ModeCar(controller, router),
-  new ModeTriggers(controller, router)
+  new ModeTriggers(controller, router),
+  new ModeWarthog(controller, router)
 };
 
 ModeSelector modeSelector(controller, modes);

@@ -17,6 +17,11 @@ void ModeSelector::setTriggersMode() {
   Serial.println("Triggers mode");
 }
 
+void ModeSelector::setWarthogMode() {
+  modePtr = modes.warthog;
+  Serial.println("Warthog mode");
+}
+
 void ModeSelector::update() {
   if (controller->y()) {
     setCarMode();
@@ -24,6 +29,10 @@ void ModeSelector::update() {
 
   if (controller->b()) {
     setTriggersMode();
+  }
+
+  if (controller->x()) {
+    setWarthogMode();
   }
 
   modePtr->update();

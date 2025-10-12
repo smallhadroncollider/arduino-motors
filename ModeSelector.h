@@ -8,6 +8,7 @@
 struct Modes {
   Mode *car;
   Mode *triggers;
+  Mode *warthog;
 };
 
 class ModeSelector {
@@ -18,6 +19,7 @@ private:
 
   void setCarMode();
   void setTriggersMode();
+  void setWarthogMode();
 
 public:
   ModeSelector(ControllerPtr &controller, Modes modes);

@@ -12,11 +12,10 @@ private:
 
   void setFlipped();
   void setStandard();
-  void logMotor(char motor, byte speed, bool forward);
+  void handleFlipMotors(ControllerPtr &controller);
+  void handleFlipMotorDirections(ControllerPtr &controller);
 
 public:
-  static bool log;
-
   Router(Motor *a, Motor *b);
   void handleFlip(ControllerPtr &controller);
   void setup();

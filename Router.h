@@ -18,7 +18,6 @@ private:
 public:
   Router(Motor *a, Motor *b);
   void handleFlip(ControllerPtr &controller);
-  void setup();
   void reset();
   void updateMotorA(byte speed, bool forward);
   void updateMotorB(byte speed, bool forward);

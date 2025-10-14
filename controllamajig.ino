@@ -4,6 +4,7 @@
 #include "ModeSelector.h"
 #include "ModeTriggers.h"
 #include "ModeWarthog.h"
+#include "MotorDriverL298N.h"
 #include "Motor.h"
 #include "Router.h"
 
@@ -19,7 +20,10 @@ byte D3 = 6;
 
 // objects
 bool Motor :: log = true;
-Router router(new Motor('A', D10, D9, D8), new Motor('B', D3, D5, D4));
+
+MotorDriverL298N motorA(D10, D9, D8);
+MotorDriverL298N motorB(D3, D4, D5);
+Router router(new Motor('A', motorA), new Motor('B', motorB));
 
 ControllerPtr controller;
 
@@ -34,7 +38,8 @@ ModeSelector modeSelector(controller, modes);
 void setup() {
   Serial.begin(115200);
 
-  router.setup();
+  motorA.setup();
+  motorB.setup();
   BP32.setup(&onConnectedController, &onDisconnectedController);
 
   Serial.println("Waiting for controller to connect");

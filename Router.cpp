@@ -53,11 +53,6 @@ void Router::setStandard() {
   Serial.println("Standard motor config");
 }
 
-void Router::setup() {
-  motorA->setup();
-  motorB->setup();
-}
-
 void Router::reset() {
   setStandard();
   motorA->setStandard();

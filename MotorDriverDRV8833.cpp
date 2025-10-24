@@ -11,7 +11,7 @@ void MotorDriverDRV8833::setup() {
 }
 
 void MotorDriverDRV8833::set(byte speed, bool forward) {
-  analogWrite(forward ? in1_pin : in2_pin, speed);
   digitalWrite(in1_pin, forward ? HIGH : LOW);
   digitalWrite(in2_pin, forward ? LOW : HIGH);
+  analogWrite(forward ? in1_pin : in2_pin, speed);
 }

@@ -4,25 +4,23 @@
 #include "ModeSelector.h"
 #include "ModeTriggers.h"
 #include "ModeWarthog.h"
-#include "MotorDriverL298N.h"
+#include "MotorDriverDRV8833.h"
 #include "Motor.h"
 #include "Router.h"
 
 // compatabilty mode pinout
-byte D10 = 21;
-byte D9 = 18;
-byte D8 = 17;
+byte D9 = 9;
+byte D8 = 8;
 
-byte D5 = 8;
-byte D4 = 7;
-byte D3 = 6;
+byte D5 = 7;
+byte D4 = 6;
 
 
 // objects
 bool Motor :: log = true;
 
-MotorDriverL298N motorA(D10, D9, D8);
-MotorDriverL298N motorB(D3, D4, D5);
+MotorDriverDRV8833 motorA(D9, D8);
+MotorDriverDRV8833 motorB(D4, D5);
 Router router(new Motor('A', motorA), new Motor('B', motorB));
 
 ControllerPtr controller;
